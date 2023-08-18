@@ -53,7 +53,8 @@ export default {
       this.activeSquare = []
       this.placeEntrance()
       this.placeExit()
-      this.placePotion()
+      this.placeItem('potion', 'a potion, it will heal you when picked up')
+      this.placeItem('goblin', 'an goblin enemy, look out!')
     },
     getRandomNumberFromRange(min, max) {
       min = Math.ceil(min)
@@ -68,18 +69,18 @@ export default {
     placeEntrance() {
       const [row, col] = this.getRandomSquareLocation(0, this.rows, 0, 2)
       this.activeSquare = [row, col]
-      this.grid[row][col].icon = 'door'
-      this.grid[row][col].iconAlt = 'a shut wooden door, it cant be opened'
+      this.grid[row][col].icon = 'entrance'
+      this.grid[row][col].iconAlt = 'the dungeon entrance'
     },
     placeExit() {
       const [row, col] = this.getRandomSquareLocation(0, this.rows, this.columns-2)
       this.grid[row][col].icon = 'open-door'
       this.grid[row][col].iconAlt = 'an open wooden door, this is your goal'
     },
-    placePotion() {
+    placeItem(image, altText) {
       const [row, col] = this.getRandomSquareLocation(2, this.rows, 2, this.columns-2)
-      this.grid[row][col].icon = 'potion'
-      this.grid[row][col].iconAlt = 'a potion for your health'
+      this.grid[row][col].icon = image
+      this.grid[row][col].iconAlt = altText
     },
     isLastCol(index) {
       return index >= this.columns

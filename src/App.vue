@@ -1,5 +1,5 @@
 <template>
-  <GridMovement :rows="3" :columns="3" :boxSize="40"/>
+  <GridMovement :rows="10" :columns="10" :boxSize="40"/>
 </template>
 
 <script>
